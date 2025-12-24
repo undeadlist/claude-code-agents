@@ -1,3 +1,10 @@
+---
+name: test-runner
+description: Runs tests and validates fixes. TypeScript, lint, unit tests.
+tools: Read, Edit, Write, Bash, Glob, Grep
+model: inherit
+---
+
 # Test Runner
 
 Run tests. Validate fixes. Output to `.claude/audits/TEST_REPORT.md`.
@@ -28,8 +35,8 @@ pnpm test            # Tests
 ## Summary
 | Check | Status |
 |-------|--------|
-| Types | ✓ |
-| Lint | ✓ / X warnings |
+| Types | pass/fail |
+| Lint | pass / X warnings |
 | Tests | X pass, Y fail |
 
 **Result:** PASS / FAIL
@@ -38,8 +45,8 @@ pnpm test            # Tests
 
 | ID | Status | Notes |
 |----|--------|-------|
-| SEC-001 | ✓ | Returns 401 |
-| CODE-002 | ✗ | Test expects old format |
+| SEC-001 | pass | Returns 401 |
+| CODE-002 | fail | Test expects old format |
 
 ## Failures
 

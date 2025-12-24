@@ -1,3 +1,10 @@
+---
+name: code-auditor
+description: Code quality auditor. Reviews patterns, maintainability, architecture.
+tools: Read, Grep, Glob, Bash
+model: inherit
+---
+
 # Code Audit
 
 Find quality issues. Output to `.claude/audits/AUDIT_CODE.md`.
@@ -8,23 +15,32 @@ Find quality issues. Output to `.claude/audits/AUDIT_CODE.md`.
 - `any` usage (should be near zero)
 - Missing null checks
 - Unsafe assertions
+- Implicit any from untyped imports
 
 **Errors**
 - Empty catch blocks
 - Silent failures
 - Missing error boundaries (React)
-- Unhelpful messages
+- Unhelpful error messages
+- Unhandled promise rejections
 
 **Structure**
 - Functions over 50 lines
 - Nesting over 3 levels
-- God files
-- Duplicate logic
+- God files (>500 lines)
+- Duplicate logic across files
+- Inconsistent naming conventions
 
 **Data**
 - N+1 queries
 - Unbounded fetches (no limit/pagination)
 - Non-atomic updates on shared state
+- Missing database indexes on queried fields
+
+**Patterns**
+- DRY violations
+- API response inconsistency
+- Frontend/backend contract mismatches
 
 ## Grep
 
@@ -51,11 +67,12 @@ find src -name "*.ts" -o -name "*.tsx" | xargs wc -l | sort -n | tail -10
 # Code Audit
 
 ## Summary
-| Type | Count |
-|------|-------|
+| Severity | Count |
+|----------|-------|
 | Critical | X |
-| Warning | X |
-| Note | X |
+| High | X |
+| Medium | X |
+| Low | X |
 
 **Metrics:** X files, Y `any`, Z console.logs
 
@@ -64,10 +81,13 @@ find src -name "*.ts" -o -name "*.tsx" | xargs wc -l | sort -n | tail -10
 ### CODE-001: [Title]
 **File:** `path:line`
 **Issue:** What's wrong
-**Fix:** What to do
+**Fix:** Specific recommendation
 
-## Warnings
+## High
+...
+
+## Medium
 ...
 ```
 
-Focus on things that cause bugs, not style preferences.
+Focus on things that cause bugs, not style preferences. Include file:line for every finding.

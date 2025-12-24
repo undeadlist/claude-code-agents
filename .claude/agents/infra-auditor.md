@@ -1,3 +1,10 @@
+---
+name: infra-auditor
+description: Infrastructure and deployment checker. Env vars, headers, database config.
+tools: Read, Grep, Glob, Bash
+model: inherit
+---
+
 # Infrastructure Audit
 
 Check deployment readiness. Output to `.claude/audits/AUDIT_INFRA.md`.
@@ -52,11 +59,11 @@ grep -rn "Content-Security-Policy\|X-Frame" src
 ## Summary
 | Area | Status |
 |------|--------|
-| Environment | ✓/✗ |
-| Headers | ✓/✗ |
-| Database | ✓/✗ |
-| CORS | ✓/✗ |
-| Health | ✓/✗ |
+| Environment | pass/fail |
+| Headers | pass/fail |
+| Database | pass/fail |
+| CORS | pass/fail |
+| Health | pass/fail |
 
 ## Issues
 

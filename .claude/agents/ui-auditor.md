@@ -1,3 +1,10 @@
+---
+name: ui-auditor
+description: UI/UX consistency and accessibility checker. Design patterns, a11y issues.
+tools: Read, Grep, Glob, Bash
+model: inherit
+---
+
 # UI/UX Audit
 
 Find consistency and usability issues. Output to `.claude/audits/AUDIT_UI_UX.md`.
