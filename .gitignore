@@ -1,3 +1,4 @@
 # Audit outputs - generated files
 .claude/audits/*.md
 !.claude/audits/.gitkeep
+.claude/settings.local.json
