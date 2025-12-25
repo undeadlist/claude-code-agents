@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520">
   <style>
-    @keyframes typeText {
-      from { width: 0; }
-      to { width: 100%; }
-    }
     @keyframes blink {
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
@@ -15,10 +11,6 @@
     @keyframes pulse {
       0%, 100% { fill: #4ade80; }
       50% { fill: #22c55e; }
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
     .cursor {
       animation: blink 1s step-end infinite;
@@ -35,17 +27,20 @@
     .line10 { animation: fadeIn 0.3s ease-out 5.0s both; }
     .line11 { animation: fadeIn 0.3s ease-out 5.5s both; }
     .line12 { animation: fadeIn 0.3s ease-out 6.0s both; }
+    .line13 { animation: fadeIn 0.3s ease-out 6.5s both; }
+    .line14 { animation: fadeIn 0.3s ease-out 7.0s both; }
     .spinner1 { animation: pulse 1s ease-in-out 2.0s infinite; }
     .spinner2 { animation: pulse 1s ease-in-out 2.2s infinite; }
     .spinner3 { animation: pulse 1s ease-in-out 2.4s infinite; }
     .spinner4 { animation: pulse 1s ease-in-out 2.6s infinite; }
     .spinner5 { animation: pulse 1s ease-in-out 2.8s infinite; }
+    .spinner6 { animation: pulse 1s ease-in-out 3.0s infinite; }
   </style>
-  
+
   <!-- Terminal Window -->
-  <rect width="800" height="500" rx="12" fill="#0d1117"/>
-  <rect x="2" y="2" width="796" height="496" rx="10" fill="none" stroke="#30363d" stroke-width="1"/>
-  
+  <rect width="800" height="520" rx="12" fill="#0d1117"/>
+  <rect x="2" y="2" width="796" height="516" rx="10" fill="none" stroke="#30363d" stroke-width="1"/>
+
   <!-- Title Bar -->
   <rect width="800" height="40" rx="12" fill="#161b22"/>
   <rect y="28" width="800" height="12" fill="#161b22"/>
@@ -53,103 +48,113 @@
   <circle cx="44" cy="20" r="6" fill="#ffbd2e"/>
   <circle cx="68" cy="20" r="6" fill="#27ca40"/>
   <text x="400" y="25" text-anchor="middle" font-family="SF Mono, Monaco, Consolas, monospace" font-size="13" fill="#8b949e">claude-code-agents — bash</text>
-  
+
   <!-- Terminal Content -->
   <g transform="translate(24, 60)" font-family="SF Mono, Monaco, Consolas, monospace" font-size="14">
-    
+
     <!-- Prompt and command -->
     <g class="line1">
       <text y="20" fill="#7ee787">❯</text>
       <text x="20" y="20" fill="#c9d1d9">claude "Run full parallel audit on src/"</text>
     </g>
-    
+
     <!-- Claude thinking -->
     <g class="line2">
-      <text y="50" fill="#8b949e">⠋ Spawning subagents...</text>
+      <text y="50" fill="#8b949e">⠋ Spawning 6 audit agents in parallel...</text>
     </g>
-    
+
     <!-- Task spawning -->
     <g class="line3">
       <text y="90" fill="#d4a574">╭─ Task() Parallel Execution ─────────────────────────────╮</text>
     </g>
-    
+
     <!-- Agent 1 -->
     <g class="line4">
       <text y="120" fill="#d4a574">│</text>
       <circle cx="22" cy="115" r="4" class="spinner1" fill="#4ade80"/>
       <text x="34" y="120" fill="#79c0ff">code-auditor</text>
-      <text x="150" y="120" fill="#8b949e">→ scanning src/components/</text>
+      <text x="165" y="120" fill="#8b949e">→ patterns, complexity</text>
       <text x="680" y="120" fill="#d4a574">│</text>
     </g>
-    
+
     <!-- Agent 2 -->
     <g class="line5">
       <text y="150" fill="#d4a574">│</text>
       <circle cx="22" cy="145" r="4" class="spinner2" fill="#4ade80"/>
       <text x="34" y="150" fill="#79c0ff">bug-auditor</text>
-      <text x="150" y="150" fill="#8b949e">→ scanning src/lib/</text>
+      <text x="165" y="150" fill="#8b949e">→ vulnerabilities, auth</text>
       <text x="680" y="150" fill="#d4a574">│</text>
     </g>
-    
+
     <!-- Agent 3 -->
     <g class="line6">
       <text y="180" fill="#d4a574">│</text>
       <circle cx="22" cy="175" r="4" class="spinner3" fill="#4ade80"/>
       <text x="34" y="180" fill="#79c0ff">security-auditor</text>
-      <text x="150" y="180" fill="#8b949e">→ scanning src/api/</text>
+      <text x="165" y="180" fill="#8b949e">→ OWASP, injection</text>
       <text x="680" y="180" fill="#d4a574">│</text>
     </g>
-    
+
     <!-- Agent 4 -->
     <g class="line7">
       <text y="210" fill="#d4a574">│</text>
       <circle cx="22" cy="205" r="4" class="spinner4" fill="#4ade80"/>
-      <text x="34" y="210" fill="#79c0ff">doc-auditor</text>
-      <text x="150" y="210" fill="#8b949e">→ scanning src/pages/</text>
+      <text x="34" y="210" fill="#79c0ff">ui-auditor</text>
+      <text x="165" y="210" fill="#8b949e">→ a11y, consistency</text>
       <text x="680" y="210" fill="#d4a574">│</text>
     </g>
-    
+
     <!-- Agent 5 -->
     <g class="line8">
       <text y="240" fill="#d4a574">│</text>
       <circle cx="22" cy="235" r="4" class="spinner5" fill="#4ade80"/>
-      <text x="34" y="240" fill="#79c0ff">perf-auditor</text>
-      <text x="150" y="240" fill="#8b949e">→ scanning src/hooks/</text>
+      <text x="34" y="240" fill="#79c0ff">infra-auditor</text>
+      <text x="165" y="240" fill="#8b949e">→ env, headers, CORS</text>
       <text x="680" y="240" fill="#d4a574">│</text>
     </g>
-    
+
+    <!-- Agent 6 -->
     <g class="line9">
-      <text y="270" fill="#d4a574">╰──────────────────────────────────────────────────────────╯</text>
+      <text y="270" fill="#d4a574">│</text>
+      <circle cx="22" cy="265" r="4" class="spinner6" fill="#4ade80"/>
+      <text x="34" y="270" fill="#79c0ff">doc-auditor</text>
+      <text x="165" y="270" fill="#8b949e">→ coverage, API docs</text>
+      <text x="680" y="270" fill="#d4a574">│</text>
     </g>
-    
-    <!-- Results -->
+
     <g class="line10">
-      <text y="310" fill="#7ee787">✓</text>
-      <text x="20" y="310" fill="#c9d1d9">5 agents completed in</text>
-      <text x="200" y="310" fill="#ffa657">12.4s</text>
-      <text x="260" y="310" fill="#8b949e">(vs ~45s sequential)</text>
+      <text y="300" fill="#d4a574">╰──────────────────────────────────────────────────────────╯</text>
     </g>
-    
+
+    <!-- Results -->
     <g class="line11">
-      <text y="340" fill="#c9d1d9">Found:</text>
-      <text x="60" y="340" fill="#f85149">3 critical</text>
-      <text x="140" y="340" fill="#d29922">7 warnings</text>
-      <text x="230" y="340" fill="#79c0ff">12 suggestions</text>
+      <text y="340" fill="#7ee787">✓</text>
+      <text x="20" y="340" fill="#c9d1d9">6 agents completed in</text>
+      <text x="200" y="340" fill="#ffa657">11.2s</text>
+      <text x="260" y="340" fill="#8b949e">(vs ~52s sequential)</text>
     </g>
-    
+
     <g class="line12">
-      <text y="380" fill="#8b949e">→ Output: AUDIT-REPORT.md</text>
+      <text y="370" fill="#c9d1d9">Found:</text>
+      <text x="60" y="370" fill="#f85149">2 critical</text>
+      <text x="145" y="370" fill="#d29922">5 high</text>
+      <text x="210" y="370" fill="#79c0ff">8 medium</text>
+      <text x="300" y="370" fill="#8b949e">→ fix-planner creating FIXES.md</text>
     </g>
-    
+
+    <g class="line13">
+      <text y="400" fill="#8b949e">→ Output: .claude/audits/AUDIT_*.md, FIXES.md</text>
+    </g>
+
     <!-- Final prompt -->
-    <g class="line12">
-      <text y="420" fill="#7ee787">❯</text>
-      <rect x="20" y="406" width="10" height="18" fill="#c9d1d9" class="cursor"/>
+    <g class="line14">
+      <text y="440" fill="#7ee787">❯</text>
+      <rect x="20" y="426" width="10" height="18" fill="#c9d1d9" class="cursor"/>
     </g>
-    
+
   </g>
-  
+
   <!-- Branding -->
-  <text x="400" y="480" text-anchor="middle" font-family="SF Mono, Monaco, Consolas, monospace" font-size="12" fill="#484f58">claude-code-agents • undeadlist.com</text>
-  
+  <text x="400" y="500" text-anchor="middle" font-family="SF Mono, Monaco, Consolas, monospace" font-size="12" fill="#484f58">claude-code-agents • 12 agents • undeadlist.com</text>
+
 </svg>
