@@ -18,6 +18,8 @@ You're the orchestrator. Spawn subagents via `Task()` for focused work.
 | `architect-reviewer` | `.claude/agents/architect-reviewer.md` | Final approval |
 | `browser-qa-agent` | `.claude/agents/browser-qa-agent.md` | Chrome UI testing |
 | `fullstack-qa-orchestrator` | `.claude/agents/fullstack-qa-orchestrator.md` | Find-fix-verify loop |
+| `console-monitor` | `.claude/agents/console-monitor.md` | Real-time console watching |
+| `visual-diff` | `.claude/agents/visual-diff.md` | Screenshot comparison |
 
 ## Spawning
 

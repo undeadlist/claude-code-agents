@@ -31,7 +31,9 @@ Pull requests welcome.
 ├── test-*.md                     Validators
 ├── *-reviewer.md                 Quality gates
 ├── browser-qa-agent.md           Chrome UI testing
-└── fullstack-qa-orchestrator.md  Find-fix-verify loop
+├── fullstack-qa-orchestrator.md  Find-fix-verify loop
+├── console-monitor.md            Real-time console watching
+└── visual-diff.md                Screenshot comparison
 ```
 
 Each agent file maps to a Claude Code subagent type. Check README for the mapping.

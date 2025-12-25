@@ -1,0 +1,146 @@
+# Project Configuration for Claude Code
+
+> Drop this file in any project root. Customize the PROJECT CONFIG section.
+
+## PROJECT CONFIG
+
+```yaml
+# === CUSTOMIZE THIS SECTION ===
+project_name: "YOUR_PROJECT_NAME"
+dev_server_cmd: "npm run dev"
+dev_url: "http://localhost:3000"
+tech_stack:
+  - TypeScript
+  - React
+  - Node.js
+test_flows:
+  - "Homepage load"
+  - "User authentication"
+  - "Main feature flow"
+# === END CUSTOMIZATION ===
+```
+
+## CORE RULES (NON-NEGOTIABLE)
+
+### 1. No Unauthorized Changes
+- **ASK BEFORE** modifying any file not directly related to the current task
+- **NEVER** refactor "while you're in there"
+- **NEVER** update dependencies unless explicitly requested
+- **NEVER** change configuration files without explicit approval
+
+### 2. Follow Existing Patterns
+- Match the codebase's existing style exactly
+- If unsure about a pattern, **grep for examples first**
+- New code should be indistinguishable from existing code
+
+### 3. Atomic Changes
+- One logical change per commit
+- If a task requires multiple changes, break them into steps
+- Each step should leave the codebase in a working state
+
+### 4. Verify Before Claiming Done
+- Run the dev server after changes
+- Check for TypeScript/lint errors
+- Test the actual UI if it's a UI change
+
+## CHROME BROWSER QA INTEGRATION
+
+This project uses Claude's Chrome integration for UI testing.
+
+### Setup
+```bash
+# In Claude Code, enable Chrome:
+/chrome
+
+# Verify connection:
+/chrome status
+```
+
+### QA Commands
+```
+# Full QA scan:
+"Use fullstack-qa-orchestrator to test {dev_url}"
+
+# Quick browser check:
+"Use browser-qa-agent to navigate to {dev_url} and check for console errors"
+
+# Verify specific fix:
+"Use browser-qa-agent to verify the login form now shows validation errors"
+```
+
+## PROJECT STRUCTURE
+
+```
+.claude/
+├── agents/           # Subagent definitions
+├── audits/           # Generated audit reports (gitignored)
+│   ├── AUDIT_*.md
+│   ├── FIXES.md
+│   └── QA_SESSION_LOG.md
+└── settings.json     # Claude Code settings
+
+src/                  # Source code (your structure)
+```
+
+## COMMUNICATION PROTOCOL
+
+### Starting a Task
+1. State what you're going to do
+2. List files you'll touch
+3. Wait for confirmation if scope seems large
+
+### During a Task
+- Report significant decisions
+- Ask if you hit ambiguity
+- Don't go silent for extended operations
+
+### Completing a Task
+1. Summarize what was done
+2. List files changed
+3. Note any follow-up needed
+4. Offer to run browser QA if UI was touched
+
+## ERROR HANDLING
+
+### If Build Fails
+1. Read the full error message
+2. Fix the specific error
+3. Don't "clean up" unrelated code
+4. Verify build passes before continuing
+
+### If Tests Fail
+1. Understand why the test failed
+2. Determine if test or code is wrong
+3. Fix the actual issue
+4. Don't delete or skip tests
+
+### If Browser QA Fails
+1. Check console for specific errors
+2. Identify the root cause
+3. Fix in code, not with workarounds
+4. Re-run browser QA to verify
+
+## AGENT USAGE
+
+### Parallel Audit (Fast)
+```
+"Run parallel audit: code-auditor on src/components/,
+ bug-auditor on src/lib/, security-auditor on src/api/"
+```
+
+### Browser QA Loop (Thorough)
+```
+"Use fullstack-qa-orchestrator to find and fix UI issues at {dev_url}"
+```
+
+### Pre-PR Check
+```
+"Use architect-reviewer to verify changes are production-ready"
+```
+
+## REMEMBER
+
+- You're working in a real codebase with real users
+- Breaking changes affect real people
+- When in doubt, ask
+- Quality over speed

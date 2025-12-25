@@ -43,6 +43,8 @@ AGENTS=(
     "architect-reviewer.md"
     "browser-qa-agent.md"
     "fullstack-qa-orchestrator.md"
+    "console-monitor.md"
+    "visual-diff.md"
 )
 
 for agent in "${AGENTS[@]}"; do

@@ -15,7 +15,9 @@ const AGENTS = [
     'test-runner.md',
     'architect-reviewer.md',
     'browser-qa-agent.md',
-    'fullstack-qa-orchestrator.md'
+    'fullstack-qa-orchestrator.md',
+    'console-monitor.md',
+    'visual-diff.md'
 ];
 
 function install() {
@@ -34,7 +36,7 @@ function install() {
     fs.mkdirSync(targetDir, { recursive: true });
 
     console.log('\n  Claude Code Agents\n');
-    console.log('  Installing 12 agents to .claude/agents/\n');
+    console.log('  Installing 14 agents to .claude/agents/\n');
 
     let installed = 0;
     let skipped = 0;

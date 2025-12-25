@@ -1,7 +1,7 @@
 {
   "name": "claude-code-agents",
   "version": "1.0.0",
-  "description": "12 parallel audit agents for Claude Code - code, security, UI, infrastructure audits with browser QA",
+  "description": "14 parallel audit agents for Claude Code - code, security, UI, infrastructure audits with browser QA",
   "keywords": [
     "claude",
     "claude-code",
