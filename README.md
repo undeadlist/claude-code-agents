@@ -1,216 +1,319 @@
-# Claude Code Agents
+# Claude Code Agents - Enhanced Edition
 
-![Claude Code Ready](./badges/claude-code-ready.svg)
+[![Claude Code Ready](badges/claude-code-ready.svg)](https://undeadlist.com)
 
-**Not a framework. Just prompts that work.**
+**Full-stack QA workflow with Chrome browser integration.**
 
-Drop-in subagent definitions for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that turn your CLI into a parallel code audit powerhouse.
-
-![Parallel Audit Demo](./assets/terminal-demo.svg)
+The original parallel audit agents + new browser QA capabilities for the complete Replit-style experience: navigate your app, find bugs, fix them, verify.
 
 ---
 
-## Quick Start (30 seconds)
+## What's New
 
-```bash
-# Clone the agents
-git clone https://github.com/undeadlist/claude-code-agents.git
-
-# Copy to your project
-cp -r claude-code-agents/.claude/agents/ your-project/.claude/agents/
-
-# Run Claude Code
-cd your-project
-claude "Run full parallel audit on src/"
-```
-
-That's it. No config. No framework. No dependencies.
-
----
-
-## What This Is
-
-**11 specialized subagents** that Claude Code spawns via `Task()` to audit your codebase in parallel:
+### Browser QA Agents
 
 | Agent | What It Does |
 |-------|-------------|
-| `code-auditor` | Code quality, DRY violations, complexity |
-| `bug-auditor` | Security vulns, auth gaps, runtime risks |
-| `security-auditor` | Deep OWASP analysis, injection, secrets |
-| `doc-auditor` | Missing docs, outdated comments, API coverage |
-| `infra-auditor` | Env vars, headers, deployment config |
-| `ui-auditor` | Accessibility, consistency, UX patterns |
-| `fix-planner` | Prioritized remediation plan from findings |
-| `code-fixer` | Implements fixes following project patterns |
-| `test-runner` | Runs tests, validates fixes worked |
-| `architect-reviewer` | Supervises and iterates until production-ready |
+| `browser-qa-agent` | Navigates running apps via Chrome, finds console errors, UI bugs |
+| `fullstack-qa-orchestrator` | The full loop: find → fix → verify → repeat |
 
----
-
-## Why Parallel?
-
-Most people use Claude Code linearly. One request, one response, repeat.
-
-These agents spawn **5+ Task() calls simultaneously**:
+### Enhanced Workflow
 
 ```
-Sequential: 45+ seconds
-Parallel:   ~12 seconds (3.5x faster)
-```
-
-Each agent hits a different part of your codebase at the same time. The fix-planner then synthesizes everything into `FIXES.md`.
-
----
-
-## Agent Definitions
-
-```
-.claude/agents/
-├── code-auditor.md       # Code quality specialist
-├── bug-auditor.md        # Bug & vulnerability scanner
-├── security-auditor.md   # OWASP-focused deep scan
-├── doc-auditor.md        # Documentation checker
-├── infra-auditor.md      # Infrastructure & config
-├── ui-auditor.md         # UI/UX & accessibility
-├── fix-planner.md        # Remediation architect
-├── code-fixer.md         # Implements the fixes
-├── test-runner.md        # Test validation
-└── architect-reviewer.md # Supervisor that validates work
+┌─────────────────────────────────────────────────────┐
+│  Code Audit (existing)                              │
+│  └─ Parallel agents scan your codebase              │
+├─────────────────────────────────────────────────────┤
+│  Browser QA (new)                                   │
+│  └─ Chrome navigates your running app               │
+│  └─ Finds runtime errors, UI bugs, UX issues        │
+│  └─ Fixes applied, then verified in browser         │
+└─────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Usage Examples
+## Quick Start
 
-**Full Codebase Audit:**
-```
-claude "Run parallel audit: code-auditor on src/components/,
-        bug-auditor on src/lib/, security-auditor on src/api/,
-        doc-auditor on src/pages/. Then fix-planner to create FIXES.md"
-```
-
-**Security-Focused Scan:**
-```
-claude "Use security-auditor and bug-auditor to scan for auth vulnerabilities in src/"
-```
-
-**Pre-PR Review:**
-```
-claude "Use code-auditor on the files in my last 3 commits"
-```
-
-**Supervised Fix Cycle:**
-```
-claude "Use architect-reviewer to coordinate: audit src/, create fixes,
-        implement them, then review until production-ready"
-```
-
----
-
-## Customization
-
-### Add MCP Servers
-
-Pair agents with MCP servers for enhanced capabilities:
+### 1. Install Agents
 
 ```bash
-# In your Claude Code settings
-mcp add github     # For PR reviews
-mcp add filesystem # For deep file access
-mcp add postgres   # For database schema analysis
+# In your project root
+curl -s https://undeadlist.com/agents/install.sh | bash
 ```
 
-### Project-Specific Agents
+Or with the full setup (creates CLAUDE.md, detects your stack):
 
-Create agents tailored to your stack:
-
-```markdown
----
-name: nextjs-auditor
-description: Next.js specific patterns and App Router best practices
----
-
-Check for:
-- Client/Server component boundaries
-- use client misuse
-- Metadata export patterns
-- Route handler security
+```bash
+curl -s https://undeadlist.com/agents/setup.sh | bash
 ```
+
+### 2. Enable Chrome Integration
+
+In Claude Code:
+```
+/chrome
+```
+
+Select "Enabled by default" for persistent access.
+
+### 3. Start Your Dev Server
+
+```bash
+npm run dev  # or whatever your project uses
+```
+
+### 4. Run Browser QA
+
+```
+claude "Use browser-qa-agent to scan http://localhost:3000"
+```
+
+---
+
+## Full Workflow Examples
+
+### The Complete Loop (Replit-style)
+
+```
+claude "Use fullstack-qa-orchestrator to:
+1. Scan http://localhost:3000
+2. Test login, dashboard, and checkout flows
+3. Fix any issues found
+4. Verify fixes in browser
+5. Repeat until clean"
+```
+
+### Parallel Code Audit + Browser QA
+
+```
+claude "Run parallel audit (code-auditor on src/components/,
+bug-auditor on src/lib/, security-auditor on src/api/),
+then use browser-qa-agent to verify no runtime errors"
+```
+
+### Pre-Deploy Checklist
+
+```
+claude "Use architect-reviewer to coordinate:
+1. Full code audit
+2. Browser QA on staging URL
+3. Security scan
+4. Create deployment readiness report"
+```
+
+### Quick Console Check
+
+```
+claude "Use browser-qa-agent to navigate to http://localhost:3000,
+click through the main nav, and report any console errors"
+```
+
+---
+
+## Agent Reference
+
+### Audit Agents (Parallel)
+- `code-auditor` - Code quality, DRY, complexity
+- `bug-auditor` - Security vulns, auth gaps, runtime risks
+- `security-auditor` - Deep OWASP analysis
+- `doc-auditor` - Documentation coverage
+- `infra-auditor` - Config, env vars, headers
+- `ui-auditor` - Accessibility, UX patterns
+
+### Fix Agents
+- `fix-planner` - Prioritized remediation from findings
+- `code-fixer` - Implements fixes following patterns
+- `test-runner` - Runs tests, validates fixes
+
+### Browser Agents
+- `browser-qa-agent` - Chrome-based UI testing
+- `fullstack-qa-orchestrator` - Coordinates the find-fix-verify loop
+
+### Supervisors
+- `architect-reviewer` - Oversees and iterates until production-ready
+
+---
+
+## Project Setup
+
+### Recommended CLAUDE.md
+
+Every project should have a `CLAUDE.md` at the root with:
+
+```yaml
+# Required for browser QA
+dev_server_cmd: "npm run dev"
+dev_url: "http://localhost:3000"
+test_flows:
+  - "Homepage load"
+  - "User login"
+  - "Main feature"
+```
+
+Use the setup script to auto-generate this:
+
+```bash
+curl -s https://undeadlist.com/agents/setup.sh | bash
+```
+
+### Directory Structure
+
+```
+your-project/
+├── CLAUDE.md              # Project config + rules
+├── .claude/
+│   ├── agents/            # All agent definitions
+│   │   ├── browser-qa-agent.md
+│   │   ├── fullstack-qa-orchestrator.md
+│   │   ├── code-auditor.md
+│   │   └── ... (all agents)
+│   └── audits/            # Generated reports (gitignored)
+│       ├── AUDIT_BROWSER_QA.md
+│       ├── AUDIT_CODE.md
+│       ├── FIXES.md
+│       └── QA_SESSION_LOG.md
+└── src/                   # Your code
+```
+
+---
+
+## Chrome Integration Details
+
+### Requirements
+- Chrome browser (not Brave, Arc, etc.)
+- Claude for Chrome extension installed
+- Not running in WSL
+
+### How It Works
+
+Claude Code communicates with Chrome via the extension. When you ask for browser testing:
+
+1. Claude opens a new Chrome tab
+2. Navigates to your URL
+3. Interacts with the page (clicks, types, scrolls)
+4. Reads console output and DOM state
+5. Reports findings back
+
+### Handling Auth
+
+If your app requires login:
+
+```
+claude "Navigate to http://localhost:3000/login,
+I'll log in manually, then scan the dashboard"
+```
+
+Claude will pause at login pages and wait for you.
+
+### Recording Sessions
+
+```
+claude "Record a GIF of the checkout flow at http://localhost:3000"
+```
+
+Creates a GIF file documenting the interaction.
 
 ---
 
 ## Outputs
 
-Everything goes to `.claude/audits/`:
+All reports go to `.claude/audits/`:
 
-- `AUDIT_CODE.md` - code quality issues
-- `AUDIT_SECURITY.md` - vulnerabilities found
-- `AUDIT_SECURITY_DEEP.md` - OWASP analysis
-- `AUDIT_DOCS.md` - documentation gaps
-- `AUDIT_INFRA.md` - config problems
-- `AUDIT_UI_UX.md` - accessibility/UX issues
-- `FIXES.md` - prioritized fix plan
-- `TEST_REPORT.md` - test results
+| File | Content |
+|------|---------|
+| `AUDIT_BROWSER_QA.md` | Console errors, UI issues from browser testing |
+| `AUDIT_CODE.md` | Code quality findings |
+| `AUDIT_SECURITY.md` | Vulnerability scan results |
+| `AUDIT_SECURITY_DEEP.md` | OWASP analysis |
+| `AUDIT_DOCS.md` | Documentation gaps |
+| `AUDIT_INFRA.md` | Config issues |
+| `AUDIT_UI_UX.md` | Accessibility/UX findings |
+| `FIXES.md` | Prioritized fix plan |
+| `QA_SESSION_LOG.md` | Full session transcript |
+| `QA_COMPLETE.md` | Final summary when session ends |
 
-Gitignored by default. These are working files, not artifacts.
+These are gitignored by default—working files, not artifacts.
 
 ---
 
-## One-Liner Install
+## Tips
 
+### Speed vs Thoroughness
+
+**Fast (parallel, no browser):**
+```
+claude "Run parallel audit on src/"
+```
+
+**Thorough (includes browser):**
+```
+claude "Full QA: parallel audit + browser testing at localhost:3000"
+```
+
+### Scope Control
+
+Limit scope to keep things fast:
+```
+claude "Use browser-qa-agent to test ONLY the login flow"
+```
+
+### Handling Flaky Tests
+
+If browser QA keeps failing on timing:
+```
+claude "Use browser-qa-agent with extra wait time, the app loads slowly"
+```
+
+### Multi-Project Setup
+
+Install agents globally for all projects:
 ```bash
-curl -s https://undeadlist.com/agents/install.sh | bash
+cp -r .claude/agents/ ~/.claude/agents/
 ```
 
-Drops agents into your current project's `.claude/agents/` directory.
+Then they're available everywhere.
 
 ---
 
-## When to Use This vs Just Chatting
+## Troubleshooting
 
-**Use agents for:**
-- Pre-launch audits (parallel = fast)
-- Structured fix cycles
-- Large codebases (fresh context per agent)
-
-**Just chat for:**
-- Quick fixes
-- Active development
-- Anything exploratory
-
-Agents lose conversation context. That's the tradeoff for parallelism and structure.
-
----
-
-## How It Actually Works
-
-Claude Code has a `Task()` tool that spawns subprocess agents:
+### Chrome Not Connecting
 
 ```
-Task(
-  subagent_type="bug-auditor",
-  prompt="...",           // your instructions
-  description="Security"  // label
-)
+/chrome status
 ```
 
-Multiple `Task()` calls in one response = parallel execution.
-Sequential = wait for result, then next `Task()`.
+If disconnected:
+1. Ensure Chrome is running
+2. Check Claude for Chrome extension is enabled
+3. Restart Chrome
+4. Run `/chrome` again
 
-Agents can't talk to each other. They communicate via files in `.claude/audits/`.
+### Server Not Running
+
+Browser QA will fail if your dev server isn't up:
+```bash
+# Start server first
+npm run dev
+
+# Then run QA
+claude "Use browser-qa-agent..."
+```
+
+### Wrong Port
+
+Update your CLAUDE.md or specify in prompt:
+```
+claude "Use browser-qa-agent to scan http://localhost:5173"
+```
 
 ---
 
 ## License
 
-MIT. Use it, fork it, sell it, whatever.
+MIT. Use it, fork it, enhance it.
 
 ---
 
 Made by [UndeadList](https://undeadlist.com) — the marketplace for indie software.
-
-<p align="center">
-  <a href="https://undeadlist.com">
-    <img src="./badges/claude-code-ready.svg" alt="Claude Code Ready">
-  </a>
-</p>

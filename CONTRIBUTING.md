@@ -25,11 +25,11 @@ Pull requests welcome.
 ## Structure
 
 ```
-.claude/prompts/
-├── audit/     Scanners that find issues
-├── fix/       Planners and implementers
-├── test/      Validators
-└── review/    Quality gates
+.claude/agents/
+├── *-auditor.md   Scanners that find issues
+├── fix-*.md       Planners and implementers
+├── test-*.md      Validators
+└── *-reviewer.md  Quality gates
 ```
 
-Each prompt maps to a Claude Code subagent type. Check README for the mapping.
+Each agent file maps to a Claude Code subagent type. Check README for the mapping.
