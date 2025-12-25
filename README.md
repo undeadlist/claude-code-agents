@@ -40,14 +40,15 @@ The original parallel audit agents + new browser QA capabilities for the complet
 ### 1. Install Agents
 
 ```bash
-# In your project root
+# Via npx (recommended)
+npx claude-code-agents
+
+# Or via curl
 curl -s https://undeadlist.com/agents/install.sh | bash
-```
 
-Or with the full setup (creates CLAUDE.md, detects your stack):
-
-```bash
-curl -s https://undeadlist.com/agents/setup.sh | bash
+# Or clone directly
+git clone https://github.com/undeadlist/claude-code-agents.git .claude/agents-repo
+cp -r .claude/agents-repo/.claude/agents .claude/
 ```
 
 ### 2. Enable Chrome Integration

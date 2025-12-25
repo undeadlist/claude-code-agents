@@ -1,0 +1,35 @@
+{
+  "name": "claude-code-agents",
+  "version": "1.0.0",
+  "description": "12 parallel audit agents for Claude Code - code, security, UI, infrastructure audits with browser QA",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "ai-agents",
+    "code-audit",
+    "security-audit",
+    "subagents",
+    "parallel-execution"
+  ],
+  "author": "UndeadList <hello@undeadlist.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/undeadlist/claude-code-agents.git"
+  },
+  "homepage": "https://github.com/undeadlist/claude-code-agents#readme",
+  "bugs": {
+    "url": "https://github.com/undeadlist/claude-code-agents/issues"
+  },
+  "bin": {
+    "claude-code-agents": "./bin/install.js"
+  },
+  "files": [
+    "bin/",
+    ".claude/agents/"
+  ],
+  "engines": {
+    "node": ">=14"
+  }
+}
