@@ -65,10 +65,28 @@ grep -rn "style={{" src --include="*.tsx" | wc -l
 **Fix:** What to do
 
 ## Consistency
-...
+
+### CON-001: Hardcoded color values
+**File:** `src/components/Card.tsx:12`
+**Issue:** Uses `#3b82f6` instead of design token
+**Fix:** Replace with `var(--color-primary)` or Tailwind `text-blue-500`
+
+### CON-002: Duplicate button styles
+**File:** `src/components/SubmitButton.tsx`, `src/components/ActionButton.tsx`
+**Issue:** Same styles defined in two components
+**Fix:** Extract shared Button component with variants
 
 ## UX
-...
+
+### UX-001: No loading state on form submit
+**File:** `src/components/ContactForm.tsx:45`
+**Issue:** Button stays clickable during API call
+**Fix:** Disable button and show spinner while loading
+
+### UX-002: Missing empty state
+**File:** `src/pages/Dashboard.tsx:78`
+**Issue:** Shows blank area when no items exist
+**Fix:** Add helpful message with action to create first item
 ```
 
 Prioritize accessibility blockers.

@@ -230,6 +230,7 @@ All reports go to `.claude/audits/`:
 | `AUDIT_INFRA.md` | Config issues |
 | `AUDIT_UI_UX.md` | Accessibility/UX findings |
 | `FIXES.md` | Prioritized fix plan |
+| `TEST_REPORT.md` | Test validation results |
 | `QA_SESSION_LOG.md` | Full session transcript |
 | `QA_COMPLETE.md` | Final summary when session ends |
 

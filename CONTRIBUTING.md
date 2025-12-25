@@ -26,10 +26,12 @@ Pull requests welcome.
 
 ```
 .claude/agents/
-├── *-auditor.md   Scanners that find issues
-├── fix-*.md       Planners and implementers
-├── test-*.md      Validators
-└── *-reviewer.md  Quality gates
+├── *-auditor.md                  Scanners that find issues
+├── fix-*.md                      Planners and implementers
+├── test-*.md                     Validators
+├── *-reviewer.md                 Quality gates
+├── browser-qa-agent.md           Chrome UI testing
+└── fullstack-qa-orchestrator.md  Find-fix-verify loop
 ```
 
 Each agent file maps to a Claude Code subagent type. Check README for the mapping.

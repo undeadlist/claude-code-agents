@@ -72,17 +72,58 @@ Based on: code-auditor, bug-auditor, security-auditor, doc-auditor
 2. Return 401 if missing
 **Verify:** Curl without auth returns 401
 
-### [ ] SEC-002: ...
+### [ ] SEC-002: Escape user content in templates
+**Source:** AUDIT_SECURITY.md
+**Effort:** S
+**File:** `src/components/Comment.tsx`
+**Do:**
+1. Replace innerHTML with textContent
+2. Use DOMPurify for rich text
+**Verify:** XSS payload renders as text, not script
 
 ---
 
 ## P2
-...
+
+### [ ] CODE-001: Reduce UserDashboard complexity
+**Source:** AUDIT_CODE.md
+**Effort:** M
+**File:** `src/components/UserDashboard.tsx`
+**Do:**
+1. Extract data fetching to custom hook
+2. Split into smaller components
+**Verify:** File under 200 lines, single responsibility
+
+### [ ] UI-001: Add loading states to forms
+**Source:** AUDIT_UI_UX.md
+**Effort:** S
+**File:** `src/components/LoginForm.tsx`
+**Do:**
+1. Add disabled state during submit
+2. Show spinner in button
+**Verify:** Button shows loading state during API call
 
 ---
 
 ## P3
-...
+
+### [ ] DOC-001: Add JSDoc to public API functions
+**Source:** AUDIT_DOCS.md
+**Effort:** M
+**File:** `src/lib/api.ts`
+**Do:**
+1. Add @param and @returns docs
+2. Include usage examples
+**Verify:** IDE shows documentation on hover
+
+### [ ] CODE-002: Remove console.log statements
+**Source:** AUDIT_CODE.md
+**Effort:** XS
+**File:** Multiple files
+**Do:**
+1. Replace with proper logging
+2. Remove debug statements
+**Verify:** `grep console.log` returns zero results
 
 ---
 

@@ -84,10 +84,28 @@ find src -name "*.ts" -o -name "*.tsx" | xargs wc -l | sort -n | tail -10
 **Fix:** Specific recommendation
 
 ## High
-...
+
+### CODE-002: Empty catch blocks swallow errors
+**File:** `src/lib/api.ts:89`
+**Issue:** Errors are caught but not logged or handled
+**Fix:** Add error logging and appropriate user feedback
+
+### CODE-003: Function exceeds 80 lines
+**File:** `src/components/Dashboard.tsx:45`
+**Issue:** handleSubmit function is too complex to test
+**Fix:** Extract validation and API calls to separate functions
 
 ## Medium
-...
+
+### CODE-004: Duplicate validation logic
+**File:** `src/components/Form.tsx:23`, `src/pages/Register.tsx:67`
+**Issue:** Same email validation in multiple places
+**Fix:** Create shared validation utility
+
+### CODE-005: Inconsistent API response shape
+**File:** `src/api/users.ts:34`, `src/api/products.ts:28`
+**Issue:** Some endpoints return `{ data }`, others return raw array
+**Fix:** Standardize to `{ data, error, meta }` pattern
 ```
 
 Focus on things that cause bugs, not style preferences. Include file:line for every finding.

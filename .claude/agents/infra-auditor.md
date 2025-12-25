@@ -67,9 +67,21 @@ grep -rn "Content-Security-Policy\|X-Frame" src
 
 ## Issues
 
-### INFRA-001: [Title]
-**Issue:** What's missing
-**Fix:** What to add
+### INFRA-001: Missing .env.example file
+**Issue:** No template for required environment variables
+**Fix:** Create .env.example with all required vars (redacted values)
+
+### INFRA-002: No health check endpoint
+**Issue:** `/api/health` returns 404
+**Fix:** Add endpoint that checks database connection and returns 200/503
+
+### INFRA-003: CORS allows wildcard origin
+**Issue:** `Access-Control-Allow-Origin: *` in production
+**Fix:** Restrict to specific allowed domains
+
+### INFRA-004: Missing CSP headers
+**Issue:** No Content-Security-Policy configured
+**Fix:** Add CSP header in next.config.js or middleware
 ```
 
 Flag blockers clearly.

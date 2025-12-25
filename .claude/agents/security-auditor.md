@@ -87,10 +87,36 @@ prisma.user.findMany({ where: { name: { contains: search } } })
 \`\`\`
 
 ## High
-...
+
+### SEC-002: Missing rate limiting on login
+**CVSS Score:** 7.5 (High)
+**Location:** `src/api/auth/login.ts:12`
+**Attack Vector:** Brute force password attempts
+**Impact:** Account takeover via credential stuffing
+**Remediation:** Add rate limiting middleware (5 attempts/minute)
+
+### SEC-003: Session token in URL parameter
+**CVSS Score:** 7.1 (High)
+**Location:** `src/pages/verify.tsx:8`
+**Attack Vector:** Token visible in browser history, referrer headers
+**Impact:** Session hijacking
+**Remediation:** Use POST body or HTTP-only cookies for tokens
 
 ## Medium
-...
+
+### SEC-004: Verbose error messages expose stack traces
+**CVSS Score:** 5.3 (Medium)
+**Location:** `src/api/middleware/error.ts:15`
+**Attack Vector:** Error responses include internal paths
+**Impact:** Information disclosure aids further attacks
+**Remediation:** Return generic messages in production
+
+### SEC-005: Missing CSRF protection on state-changing endpoints
+**CVSS Score:** 4.3 (Medium)
+**Location:** `src/api/settings.ts:*`
+**Attack Vector:** Forged requests from malicious sites
+**Impact:** Unauthorized settings changes
+**Remediation:** Add CSRF tokens to forms
 ```
 
 Verify every finding. Include proof of concept.
