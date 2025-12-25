@@ -4,6 +4,8 @@
 
 **Full-stack QA workflow with Chrome browser integration.**
 
+![Parallel Audit Demo](./assets/terminal-demo.svg)
+
 The original parallel audit agents + new browser QA capabilities for the complete Replit-style experience: navigate your app, find bugs, fix them, verify.
 
 ---
