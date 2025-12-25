@@ -8,11 +8,11 @@ https://github.com/jqueryscript/awesome-claude-code
 
 ## Entry (copy exactly)
 ```markdown
-* [**claude-code-agents**](https://github.com/undeadlist/claude-code-agents): 12 parallel audit agents for code, security, UI, and infrastructure analysis with browser QA integration.
+* [**claude-code-agents**](https://github.com/undeadlist/claude-code-agents): 14 parallel audit agents for code, security, UI, and infrastructure analysis with browser QA integration.
 ```
 
 ## PR Title
-Add claude-code-agents - 12 parallel audit agents
+Add claude-code-agents - 14 parallel audit agents
 
 ## PR Description
 ```
@@ -22,7 +22,7 @@ Adds claude-code-agents to the Sub Agents section.
 - 6 Audit Agents: code, bug, security, doc, infra, ui
 - 3 Fix Agents: fix-planner, code-fixer, test-runner
 - 1 Supervisor: architect-reviewer
-- 2 Browser QA: browser-qa-agent, fullstack-qa-orchestrator
+- 4 Browser QA: browser-qa-agent, fullstack-qa-orchestrator, console-monitor, visual-diff
 
 **Features:**
 - Parallel execution via Task() spawning
