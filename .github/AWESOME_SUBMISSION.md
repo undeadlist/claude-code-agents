@@ -1,49 +1,55 @@
 # Awesome Claude Code Submission
 
-## Pull Request Title
-Add claude-code-agents - 12 parallel audit agents
+## Target Repository
+https://github.com/jqueryscript/awesome-claude-code
 
-## Entry to Add
+## Section
+**Sub Agents**
 
-Under **Prompts** section (or create "Agent Collections" if it doesn't exist):
-
+## Entry (copy exactly)
 ```markdown
-- [Claude Code Agents](https://github.com/undeadlist/claude-code-agents) - 12 parallel audit agents for Claude Code. Run code, security, UI, and infrastructure audits simultaneously with browser QA integration.
+* [**claude-code-agents**](https://github.com/undeadlist/claude-code-agents): 12 parallel audit agents for code, security, UI, and infrastructure analysis with browser QA integration.
 ```
 
-## Description for PR
+## PR Title
+Add claude-code-agents - 12 parallel audit agents
 
-This collection includes:
-- **6 Audit Agents**: code-auditor, bug-auditor, security-auditor, doc-auditor, infra-auditor, ui-auditor
-- **3 Fix Agents**: fix-planner, code-fixer, test-runner
-- **1 Supervisor**: architect-reviewer
-- **2 Browser QA**: browser-qa-agent, fullstack-qa-orchestrator
+## PR Description
+```
+Adds claude-code-agents to the Sub Agents section.
 
-Key features:
-- Parallel execution for faster audits
-- YAML frontmatter for Claude Code subagent integration
-- Chrome browser integration for UI testing
+**What it includes:**
+- 6 Audit Agents: code, bug, security, doc, infra, ui
+- 3 Fix Agents: fix-planner, code-fixer, test-runner
+- 1 Supervisor: architect-reviewer
+- 2 Browser QA: browser-qa-agent, fullstack-qa-orchestrator
+
+**Features:**
+- Parallel execution via Task() spawning
+- YAML frontmatter compatible with Claude Code subagents
+- Chrome integration for browser testing
 - Complete find-fix-verify workflow
 
-Install via: `npx claude-code-agents`
+**Install:** `npx claude-code-agents`
+```
 
 ---
 
-## Target Repos
+## Steps
 
-1. **awesome-claude-code** (by anthropics)
-   - URL: https://github.com/anthropics/awesome-claude-code
-   - Submit PR adding entry to appropriate section
-
-2. **awesome-claude** (by sjinzh)
-   - URL: https://github.com/sjinzh/awesome-claude
-   - May have a Claude Code or tools section
+1. Go to: https://github.com/jqueryscript/awesome-claude-code
+2. Click "Fork" (top right)
+3. Edit README.md in your fork
+4. Find the "Sub Agents" section
+5. Add entry alphabetically (after any "a-b" entries, before "d+" entries)
+6. Commit with message: "Add claude-code-agents"
+7. Click "Contribute" → "Open pull request"
+8. Use PR title and description above
 
 ---
 
-## How to Submit
+## Alternative Repos
 
-1. Fork the awesome-claude-code repo
-2. Edit README.md to add the entry (alphabetically)
-3. Create PR with title: "Add claude-code-agents - parallel audit agents"
-4. Reference this package: https://github.com/undeadlist/claude-code-agents
+Also consider submitting to:
+- https://github.com/hesreallyhim/awesome-claude-code (has similar subagent focus)
+- https://github.com/alvinunreal/awesome-claude (general Claude resources)
