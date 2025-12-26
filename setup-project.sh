@@ -56,20 +56,36 @@ if [ "$USE_CURL" = true ]; then
     echo -e "${YELLOW}Downloading agents individually...${NC}"
 
     AGENTS=(
+        # Audit agents (11)
         "code-auditor"
         "bug-auditor"
         "security-auditor"
         "doc-auditor"
         "infra-auditor"
         "ui-auditor"
+        "db-auditor"
+        "perf-auditor"
+        "dep-auditor"
+        "seo-auditor"
+        "api-tester"
+        # Fix/Implement agents (4)
         "fix-planner"
         "code-fixer"
         "test-runner"
-        "architect-reviewer"
+        "test-writer"
+        # Browser QA agents (4)
         "browser-qa-agent"
         "fullstack-qa-orchestrator"
         "console-monitor"
         "visual-diff"
+        # Deploy agents (2)
+        "deploy-checker"
+        "env-validator"
+        # Utility agents (2)
+        "pr-writer"
+        "seed-generator"
+        # Supervisors (1)
+        "architect-reviewer"
     )
 
     BASE_URL="https://raw.githubusercontent.com/undeadlist/claude-code-agents/main/.claude/agents"

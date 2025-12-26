@@ -1,7 +1,7 @@
 {
   "name": "claude-code-agents",
-  "version": "1.0.0",
-  "description": "14 parallel audit agents for Claude Code - code, security, UI, infrastructure audits with browser QA",
+  "version": "2.0.0",
+  "description": "24 parallel audit agents + 6 workflows for Claude Code - complete E2E development workflow",
   "keywords": [
     "claude",
     "claude-code",
@@ -10,7 +10,11 @@
     "code-audit",
     "security-audit",
     "subagents",
-    "parallel-execution"
+    "parallel-execution",
+    "browser-qa",
+    "deployment",
+    "testing",
+    "workflows"
   ],
   "author": "UndeadList <hello@undeadlist.com>",
   "license": "MIT",
@@ -27,7 +31,8 @@
   },
   "files": [
     "bin/",
-    ".claude/agents/"
+    ".claude/agents/",
+    "workflows/"
   ],
   "engines": {
     "node": ">=14"
