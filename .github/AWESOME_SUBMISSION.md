@@ -8,27 +8,32 @@ https://github.com/jqueryscript/awesome-claude-code
 
 ## Entry (copy exactly)
 ```markdown
-* [**claude-code-agents**](https://github.com/undeadlist/claude-code-agents): 14 parallel audit agents for code, security, UI, and infrastructure analysis with browser QA integration.
+* [**claude-code-agents**](https://github.com/undeadlist/claude-code-agents): 24 parallel agents + 6 workflows for complete E2E development - audits, fixes, browser QA, deployment validation.
 ```
 
 ## PR Title
-Add claude-code-agents - 14 parallel audit agents
+Add claude-code-agents - 24 agents + 6 workflows
 
 ## PR Description
 ```
 Adds claude-code-agents to the Sub Agents section.
 
 **What it includes:**
-- 6 Audit Agents: code, bug, security, doc, infra, ui
-- 3 Fix Agents: fix-planner, code-fixer, test-runner
-- 1 Supervisor: architect-reviewer
+- 11 Audit Agents: code, bug, security, doc, infra, ui, db, perf, dep, seo, api
+- 4 Fix Agents: fix-planner, code-fixer, test-runner, test-writer
 - 4 Browser QA: browser-qa-agent, fullstack-qa-orchestrator, console-monitor, visual-diff
+- 2 Deploy Agents: deploy-checker, env-validator
+- 2 Utility: pr-writer, seed-generator
+- 1 Supervisor: architect-reviewer
+- 6 Workflows: pre-commit, pre-deploy, full-audit, new-feature, bug-fix, release-prep
 
 **Features:**
 - Parallel execution via Task() spawning
 - YAML frontmatter compatible with Claude Code subagents
 - Chrome integration for browser testing
 - Complete find-fix-verify workflow
+- Pre-deploy validation
+- TDD workflows
 
 **Install:** `npx claude-code-agents`
 ```
@@ -41,7 +46,7 @@ Adds claude-code-agents to the Sub Agents section.
 2. Click "Fork" (top right)
 3. Edit README.md in your fork
 4. Find the "Sub Agents" section
-5. Add entry alphabetically (after any "a-b" entries, before "d+" entries)
+5. Add entry alphabetically
 6. Commit with message: "Add claude-code-agents"
 7. Click "Contribute" → "Open pull request"
 8. Use PR title and description above
@@ -51,5 +56,5 @@ Adds claude-code-agents to the Sub Agents section.
 ## Alternative Repos
 
 Also consider submitting to:
-- https://github.com/hesreallyhim/awesome-claude-code (has similar subagent focus)
-- https://github.com/alvinunreal/awesome-claude (general Claude resources)
+- https://github.com/hesreallyhim/awesome-claude-code
+- https://github.com/alvinunreal/awesome-claude

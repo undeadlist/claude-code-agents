@@ -43,43 +43,74 @@ test_flows:
 - Check for TypeScript/lint errors
 - Test the actual UI if it's a UI change
 
-## CHROME BROWSER QA INTEGRATION
+## AVAILABLE AGENTS (24)
 
-This project uses Claude's Chrome integration for UI testing.
+| Category | Agents |
+|----------|--------|
+| Audit (11) | code, bug, security, doc, infra, ui, db, perf, dep, seo, api-tester |
+| Fix (4) | fix-planner, code-fixer, test-runner, test-writer |
+| Browser QA (4) | browser-qa-agent, fullstack-qa-orchestrator, console-monitor, visual-diff |
+| Deploy (2) | deploy-checker, env-validator |
+| Utility (2) | pr-writer, seed-generator |
+| Supervisor (1) | architect-reviewer |
 
-### Setup
+## WORKFLOWS (6)
+
+| Workflow | Purpose |
+|----------|---------|
+| pre-commit | Run before commits |
+| pre-deploy | Run before deployment |
+| full-audit | All auditors in parallel |
+| new-feature | TDD workflow |
+| bug-fix | Regression prevention |
+| release-prep | Release preparation |
+
+## CHROME BROWSER QA
+
 ```bash
-# In Claude Code, enable Chrome:
+# Enable Chrome in Claude Code:
 /chrome
 
-# Verify connection:
+# Verify:
 /chrome status
-```
-
-### QA Commands
-```
-# Full QA scan:
-"Use fullstack-qa-orchestrator to test {dev_url}"
-
-# Quick browser check:
-"Use browser-qa-agent to navigate to {dev_url} and check for console errors"
-
-# Verify specific fix:
-"Use browser-qa-agent to verify the login form now shows validation errors"
 ```
 
 ## PROJECT STRUCTURE
 
 ```
 .claude/
-├── agents/           # Subagent definitions
-├── audits/           # Generated audit reports (gitignored)
+├── agents/           # Subagent definitions (24)
+├── audits/           # Generated reports (gitignored)
 │   ├── AUDIT_*.md
 │   ├── FIXES.md
 │   └── QA_SESSION_LOG.md
-└── settings.json     # Claude Code settings
+└── settings.json
 
-src/                  # Source code (your structure)
+workflows/            # Predefined agent chains (6)
+
+src/                  # Your source code
+```
+
+## QUICK COMMANDS
+
+```
+# Workflows
+"Run pre-commit workflow"
+"Run full-audit workflow on src/"
+"Run pre-deploy workflow"
+"Run new-feature workflow for: [feature]"
+"Run bug-fix workflow for: [bug]"
+"Run release-prep workflow for v1.0.0"
+
+# Parallel audit
+"Run code-auditor, bug-auditor, security-auditor in parallel on src/"
+
+# Browser QA
+"Use fullstack-qa-orchestrator to test {dev_url}"
+"Use browser-qa-agent to check for console errors"
+
+# Pre-PR
+"Use architect-reviewer to verify production-ready"
 ```
 
 ## COMMUNICATION PROTOCOL
@@ -88,11 +119,6 @@ src/                  # Source code (your structure)
 1. State what you're going to do
 2. List files you'll touch
 3. Wait for confirmation if scope seems large
-
-### During a Task
-- Report significant decisions
-- Ask if you hit ambiguity
-- Don't go silent for extended operations
 
 ### Completing a Task
 1. Summarize what was done
@@ -119,24 +145,6 @@ src/                  # Source code (your structure)
 2. Identify the root cause
 3. Fix in code, not with workarounds
 4. Re-run browser QA to verify
-
-## AGENT USAGE
-
-### Parallel Audit (Fast)
-```
-"Run parallel audit: code-auditor on src/components/,
- bug-auditor on src/lib/, security-auditor on src/api/"
-```
-
-### Browser QA Loop (Thorough)
-```
-"Use fullstack-qa-orchestrator to find and fix UI issues at {dev_url}"
-```
-
-### Pre-PR Check
-```
-"Use architect-reviewer to verify changes are production-ready"
-```
 
 ## REMEMBER
 

@@ -8,12 +8,13 @@ Pull requests welcome.
 - Language-specific checks (Go, Rust, Python)
 - Better grep patterns
 - New agent types
+- New workflows
 
 ## Guidelines
 
 - Keep prompts concise. Less is more.
 - Test your changes on a real codebase.
-- No over-kill No marketing language.
+- No over-kill. No marketing language.
 
 ## Process
 
@@ -25,15 +26,26 @@ Pull requests welcome.
 ## Structure
 
 ```
-.claude/agents/
-├── *-auditor.md                  Scanners that find issues
-├── fix-*.md                      Planners and implementers
-├── test-*.md                     Validators
-├── *-reviewer.md                 Quality gates
-├── browser-qa-agent.md           Chrome UI testing
-├── fullstack-qa-orchestrator.md  Find-fix-verify loop
-├── console-monitor.md            Real-time console watching
-└── visual-diff.md                Screenshot comparison
+.claude/agents/           # 24 agent definitions
+├── *-auditor.md          # Scanners that find issues (11)
+├── fix-*.md              # Planners and implementers
+├── test-*.md             # Validators and test generators
+├── *-checker.md          # Deploy validation
+├── *-validator.md        # Config validation
+├── *-reviewer.md         # Quality gates
+├── browser-qa-*.md       # Chrome UI testing
+├── console-monitor.md    # Real-time console
+├── visual-diff.md        # Screenshot comparison
+├── pr-writer.md          # PR generation
+└── seed-generator.md     # Test data
+
+workflows/                # 6 predefined agent chains
+├── pre-commit.md
+├── pre-deploy.md
+├── full-audit.md
+├── new-feature.md
+├── bug-fix.md
+└── release-prep.md
 ```
 
 Each agent file maps to a Claude Code subagent type. Check README for the mapping.
