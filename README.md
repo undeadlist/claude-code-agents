@@ -414,6 +414,26 @@ git diff
 
 ---
 
+## Uninstall
+
+To remove the agents from your project:
+
+```bash
+# Remove agent definitions
+rm -rf .claude/agents/
+
+# Remove generated audit reports
+rm -rf .claude/audits/
+
+# Remove workflows
+rm -rf workflows/
+
+# Optionally remove CLAUDE.md if you created one
+rm CLAUDE.md
+```
+
+---
+
 ## Contributing
 
 Found a better protocol? Agent that should exist?
@@ -430,6 +450,10 @@ MIT. Use it, fork it, enhance it.
 
 **Built by [UndeadList](https://undeadlist.com)**
 *The indie software flea market*
+
+---
+
+**Disclaimer:** Claude Code is a product of [Anthropic PBC](https://anthropic.com). This project is not affiliated with or endorsed by Anthropic.
 
 ---
 
