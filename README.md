@@ -1,6 +1,6 @@
 # Complete E2E Development Workflow
 
-[![Claude Code Ready](badges/claude-code-ready.svg)](https://undeadlist.com)
+[![Claude Code Ready](badges/claude-code-ready.svg)](https://undeadlist.com) [![Mentioned in Awesome Claude Code](https://awesome.re/mentioned-badge.svg)](https://github.com/hesreallyhim/awesome-claude-code)
 
 ## For Solo Dev Startups Building with Next.js + Claude Code
 
