@@ -115,6 +115,28 @@ claude plugin install claude-code-agents@undeadlist-claude-code-agents --scope u
 
 All 24 agents and 6 workflow skills become natively available. Use skills like `/full-audit`, `/pre-commit`, `/pre-deploy`, etc.
 
+### Verify Your Install
+
+After installing, confirm everything loaded:
+
+```bash
+# Inside Claude Code, ask:
+"List all available agents and skills from the claude-code-agents plugin"
+```
+
+You should see 24 agents and 6 skills. If not, check the [Troubleshooting](#troubleshooting) section below.
+
+### Try Before Installing
+
+Test the plugin locally without installing:
+
+```bash
+git clone https://github.com/undeadlist/claude-code-agents.git
+claude --plugin-dir ./claude-code-agents
+```
+
+This loads the plugin for that session only — nothing is installed globally.
+
 ### Alternative Installation (Per-Project)
 
 If you prefer per-project installation:
@@ -454,6 +476,45 @@ git diff
 "STOP. Verify it works before claiming done."
 "STOP. One change at a time."
 ```
+
+---
+
+## Troubleshooting
+
+### Plugin not loading / no agents found
+
+1. **Check plugin errors:** Run `/plugin` inside Claude Code and check the **Errors** tab
+2. **Verify marketplace was added:** Go to `/plugin` → **Marketplaces** tab — you should see `undeadlist-claude-code-agents`
+3. **Verify plugin is installed:** Go to `/plugin` → **Installed** tab — you should see `claude-code-agents`
+4. **Re-add and reinstall:**
+   ```bash
+   /plugin marketplace add undeadlist/claude-code-agents
+   /plugin install claude-code-agents@undeadlist-claude-code-agents
+   ```
+
+### Skills (slash commands) not appearing
+
+Skills like `/full-audit` only work when installed as a plugin. Per-project installs (`npx claude-code-agents`) install agents to `.claude/agents/` but don't register slash commands — use natural language instead:
+```
+claude "Run full-audit workflow on src/"
+```
+
+### `npx claude-code-agents` fails
+
+- Requires Node.js >= 14
+- Must be run from a project directory
+- Copies agents to `.claude/agents/` and workflows to `workflows/` in your project
+
+### `curl` installer returns 404
+
+The setup script URL is `https://undeadlist.com/agents/setup-project.sh` (not `setup.sh`). If the CDN isn't configured, use the GitHub raw URL:
+```bash
+curl -sL https://raw.githubusercontent.com/undeadlist/claude-code-agents/main/install.sh | bash
+```
+
+### Agents exist but aren't being used
+
+Make sure your project has a `CLAUDE.md` that references the agents. Run `setup-project.sh` to auto-generate one, or see the [CLAUDE.md](CLAUDE.md) in this repo as a template.
 
 ---
 
