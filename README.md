@@ -67,12 +67,12 @@ claude-code-agents/
 │   └── architect-reviewer.md       # Oversees until production-ready
 │
 ├── skills/                         # 6 workflow skills (slash commands)
-│   ├── full-audit.md               # /full-audit
-│   ├── pre-commit.md               # /pre-commit
-│   ├── pre-deploy.md               # /pre-deploy
-│   ├── new-feature.md              # /new-feature
-│   ├── bug-fix.md                  # /bug-fix
-│   └── release-prep.md             # /release-prep
+│   ├── full-audit/SKILL.md         # /full-audit
+│   ├── pre-commit/SKILL.md         # /pre-commit
+│   ├── pre-deploy/SKILL.md         # /pre-deploy
+│   ├── new-feature/SKILL.md        # /new-feature
+│   ├── bug-fix/SKILL.md            # /bug-fix
+│   └── release-prep/SKILL.md       # /release-prep
 │
 ├── workflows/                      # Detailed workflow documentation
 │   ├── pre-commit.md
@@ -99,14 +99,19 @@ claude-code-agents/
 Install once, use across all projects. No per-project file copying needed.
 
 ```bash
-# Step 1: Add the marketplace (run inside Claude Code)
+# Step 1: Add the marketplace (inside Claude Code)
 /plugin marketplace add undeadlist/claude-code-agents
 
-# Step 2: Install (run in your terminal)
-claude plugin install claude-code-agents@undeadlist-claude-code-agents
+# Step 2: Install the plugin (inside Claude Code)
+/plugin install claude-code-agents@undeadlist-claude-code-agents
 ```
 
-Or browse and install via the `/plugin` UI → **Discover** tab after Step 1.
+Or after Step 1, use `/plugin` → **Discover** tab to browse and install.
+
+You can also install from the terminal:
+```bash
+claude plugin install claude-code-agents@undeadlist-claude-code-agents --scope user
+```
 
 All 24 agents and 6 workflow skills become natively available. Use skills like `/full-audit`, `/pre-commit`, `/pre-deploy`, etc.
 
@@ -116,7 +121,7 @@ If you prefer per-project installation:
 
 ```bash
 # Option A: Full setup (creates CLAUDE.md, detects stack)
-curl -s https://undeadlist.com/agents/setup.sh | bash
+curl -s https://undeadlist.com/agents/setup-project.sh | bash
 
 # Option B: Just agents
 curl -s https://undeadlist.com/agents/install.sh | bash
@@ -190,7 +195,7 @@ Full audit → fixes → deploy validation → PR generation.
 ### Phase 0: New Project Setup
 
 ```bash
-curl -s https://undeadlist.com/agents/setup.sh | bash
+curl -s https://undeadlist.com/agents/setup-project.sh | bash
 ```
 
 ### Phase 1: Skeleton/Scaffolding
@@ -403,7 +408,7 @@ All reports go to `.claude/audits/` (gitignored):
 
 | Task | Command |
 |------|---------|
-| New project setup | `curl -s https://undeadlist.com/agents/setup.sh \| bash` |
+| New project setup | `curl -s https://undeadlist.com/agents/setup-project.sh \| bash` |
 | Enable browser QA | `/chrome` in Claude Code |
 | Pre-commit check | `"Run pre-commit workflow"` |
 | Full audit | `"Run full-audit workflow on src/"` |

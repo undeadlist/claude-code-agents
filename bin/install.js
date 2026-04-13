@@ -65,11 +65,11 @@ function install() {
     fs.mkdirSync(workflowTargetDir, { recursive: true });
     fs.mkdirSync(auditsDir, { recursive: true });
 
-    console.log('\n  Claude Code Agents v3.0\n');
+    console.log('\n  Claude Code Agents v3.1.0\n');
     console.log('  Installing 24 agents + 6 workflows\n');
     console.log('  Tip: Install as a plugin instead (once, works across all projects):');
     console.log('    /plugin marketplace add undeadlist/claude-code-agents');
-    console.log('    claude plugin install claude-code-agents@undeadlist-claude-code-agents\n');
+    console.log('    /plugin install claude-code-agents@undeadlist-claude-code-agents\n');
 
     let agentsInstalled = 0;
     let agentsSkipped = 0;

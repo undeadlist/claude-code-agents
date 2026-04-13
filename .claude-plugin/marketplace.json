@@ -1,19 +1,24 @@
 {
-  "marketplace": "community",
-  "category": "development-tools",
-  "tags": [
-    "audit",
-    "security",
-    "code-quality",
-    "testing",
-    "deployment",
-    "qa",
-    "solo-dev"
-  ],
-  "pricing": "free",
-  "changelog": {
-    "3.0.0": "Plugin format - natively callable agents without per-project installation",
-    "2.0.0": "24 agents + 6 workflows, status tracking, non-overlapping scope",
-    "1.0.0": "Initial release"
-  }
+  "name": "undeadlist-claude-code-agents",
+  "owner": {
+    "name": "UndeadList",
+    "email": "hello@undeadlist.com"
+  },
+  "metadata": {
+    "description": "24 parallel audit agents + 6 workflow skills for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-agents",
+      "source": "./",
+      "description": "24 audit agents + 6 workflow skills for solo dev startups building with Next.js + Claude Code",
+      "version": "3.1.0",
+      "author": {
+        "name": "UndeadList"
+      },
+      "category": "development-tools",
+      "tags": ["audit", "security", "code-quality", "testing", "deployment", "qa", "solo-dev"]
+    }
+  ]
 }

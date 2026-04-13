@@ -1,6 +1,6 @@
 {
   "name": "claude-code-agents",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Claude Code plugin: 24 parallel audit agents + 6 workflow skills - complete E2E development workflow",
   "keywords": [
     "claude",
