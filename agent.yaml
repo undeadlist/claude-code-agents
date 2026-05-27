@@ -1,0 +1,35 @@
+spec_version: "0.1.0"
+name: claude-code-agents
+version: 1.0.0
+description: >
+  A complete E2E development workflow system for solo dev startups building with
+  Next.js + Claude Code. Provides 24 specialised subagents (11 parallel audit
+  agents, 4 fix/implement agents, 4 browser QA agents, 2 deploy agents, 2 utility
+  agents, and 1 architect-reviewer supervisor) plus 6 workflow skills
+  (/full-audit, /pre-commit, /pre-deploy, /new-feature, /bug-fix, /release-prep).
+  The orchestrator spawns subagents via Task() for focused, non-overlapping work,
+  producing structured audit reports and driving a find-fix-verify loop until code
+  is production-ready.
+license: MIT
+model:
+  preferred: anthropic:claude-sonnet-4-6
+skills:
+  - name: full-audit
+    description: Spawns all 11 audit agents in parallel, then runs fix-planner
+  - name: pre-commit
+    description: Pre-commit gate — bug, code-quality, and security checks
+  - name: pre-deploy
+    description: Full pre-deployment validation including deploy-checker and env-validator
+  - name: new-feature
+    description: Feature development workflow with planning, implementation, and QA
+  - name: bug-fix
+    description: Bug-fix cycle — test-writer, code-fixer, test-runner
+  - name: release-prep
+    description: Release preparation — full audit, fixes, deploy-checker, pr-writer
+runtime:
+  max_turns: 100
+  adapter: claude-code
+compliance:
+  risk_tier: standard
+  supervision:
+    human_in_the_loop: destructive
