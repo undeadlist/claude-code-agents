@@ -1,0 +1,42 @@
+spec_version: "0.1.0"
+name: claude-code-agents
+version: 3.1.0
+description: >
+  A complete end-to-end development workflow package for solo developers building
+  with Next.js, React, and TypeScript using Claude Code. Provides 24 specialized
+  parallel AI subagents (audit, fix, browser QA, deploy, utility, and supervisor
+  agents) plus 6 reusable workflow skills (/full-audit, /pre-commit, /pre-deploy,
+  /new-feature, /bug-fix, /release-prep). Designed to give a solo dev a full
+  virtual engineering team — code reviewers, QA engineers, security auditors,
+  and a DevOps engineer — all orchestrated through Claude Code's Task() API with
+  strict human-approval protocols to keep AI in scope.
+author: undeadlist
+license: MIT
+
+model:
+  preferred: anthropic:claude-sonnet-4-6
+  constraints:
+    temperature: 0.2
+    max_tokens: 8192
+
+skills:
+  - full-audit
+  - pre-commit
+  - pre-deploy
+  - new-feature
+  - bug-fix
+  - release-prep
+
+runtime:
+  max_turns: 100
+  timeout: 1800
+
+compliance:
+  risk_tier: standard
+  supervision:
+    human_in_the_loop: destructive
+    kill_switch: true
+  recordkeeping:
+    audit_logging: true
+  data_governance:
+    pii_handling: redact
