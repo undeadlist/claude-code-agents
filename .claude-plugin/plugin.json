@@ -1,6 +1,6 @@
 {
   "name": "claude-code-agents",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "24 parallel audit agents + 6 workflow skills for Claude Code. Complete E2E development workflow for solo devs.",
   "author": {
     "name": "UndeadList",
@@ -19,7 +19,5 @@
     "deployment",
     "workflows",
     "solo-dev"
-  ],
-  "agents": "./agents/",
-  "skills": "./skills/"
+  ]
 }
